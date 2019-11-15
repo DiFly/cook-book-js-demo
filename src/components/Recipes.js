@@ -20,6 +20,7 @@ export const Recipes = ({recipes}) => {
                         <p className="card-text">{recipe.description}</p>
                         <p className="card-text"><small className="text-muted">Last updated {formatter.format(recipe.change)}</small></p>
                         <a href="#" className="card-link">See all recipe changes</a>
+                        <button type="button" className="btn btn-outline-danger btn-sm">&times;</button>
                     </div>
                 </div>
             ))}
