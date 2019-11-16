@@ -4,6 +4,7 @@ import {Home} from "./pages/Home";
 import {About} from "./pages/About";
 import {Navbar} from "./components/Navbar";
 import {RecipeList} from "./pages/RecipeList";
+import { AddRecipe } from './pages/AddRecipe';
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
                 <Switch>
                     <Route path={'/'} exact component={Home} />
                     <Route path={'/recipes'} exact component={RecipeList} />
+                    <Route path={'/add-new-recipe'} exact component={AddRecipe} />
                     <Route path={'/about'} exact component={About} />
                 </Switch>
             </div>
