@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
+import { CreateForm } from '../components/CreateForm';
 
 export const AddRecipe = () => {
     return (
         <Fragment>
-            <h1>Add new recipe</h1>
+            <CreateForm />
         </Fragment>
     )
 }

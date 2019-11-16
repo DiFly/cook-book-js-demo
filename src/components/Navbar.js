@@ -18,7 +18,7 @@ export const Navbar = () => (
              </li>
              <li className="nav-item">
                <NavLink className="nav-link" to="/add-new-recipe">
-                 Add New
+                 Create Recipe
                </NavLink>
              </li>
              <li className="nav-item">
