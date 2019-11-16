@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Form = () => {
+export const SearchForm = () => {
     return (
         <form>
             <div className="form-group">

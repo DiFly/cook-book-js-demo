@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
-import {Form} from "../components/Form";
 import {Recipes} from "../components/Recipes";
+import { SearchForm } from '../components/SearchForm';
 
 export const RecipeList = () => {
     const recipes = new Array(3)
@@ -15,7 +15,7 @@ export const RecipeList = () => {
 
     return (
         <Fragment>
-            <Form/>
+            <SearchForm/>
             <hr/>
             <Recipes recipes={recipes}/>
         </Fragment>
