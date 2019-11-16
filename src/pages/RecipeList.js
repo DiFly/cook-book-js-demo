@@ -3,11 +3,11 @@ import {Recipes} from "../components/Recipes";
 import { SearchForm } from '../components/SearchForm';
 
 export const RecipeList = () => {
-    const recipes = new Array(3)
+    const recipes = new Array(11)
         .fill('')
         .map((_, i) => ({
             id: i,
-            title: `R Title ${i}`,
+            title: `Recipe Title ${i}`,
             create: Date.now(),
             description: 'Some text blablabla',
             change: Date.now()
