@@ -32,7 +32,7 @@ export const Navbar = () => (
                  </NavLink>
                </li>
                <li className="nav-item">
-                 <NavLink className="nav-link" to="/add-new-recipe">
+                 <NavLink className="nav-link" to="/add-recipe">
                    Create Recipe
                  </NavLink>
                </li>
