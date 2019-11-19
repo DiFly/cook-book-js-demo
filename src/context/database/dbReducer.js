@@ -6,13 +6,13 @@ const handlers = {
     ...state, recipes: [...state.recipes, payload]
   }),
   [FETCH_RECIPES]: (state, {payload}) => ({
-    ...state, notes: payload
+    ...state, recipes: payload, loading: false
   }),
   [CHANGE_RECIPE]: (state, {payload}) => ({
-    ...state, notes: state.notes.map(recipe => recipe.id !== payload.id ? recipe : payload)
+    ...state, recipes: state.recipes.map(recipe => recipe.id !== payload.id ? recipe : payload)
   }),
   [REMOVE_RECIPE]: (state, {payload}) => ({
-    ...state, notes: state.notes.filter(recipe => recipe.id !== recipe)
+    ...state, recipes: state.recipes.filter(recipe => recipe.id !== payload)
   }),
   DEFAULT: state => state
 }

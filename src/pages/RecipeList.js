@@ -5,7 +5,7 @@ import {DbContext} from "../context/database/dbContext";
 import {Loader} from "../components/Loader";
 
 export const RecipeList = () => {
-  const {loading, recipes, fetchRecipes} = useContext(DbContext);
+  const {loading, recipes, fetchRecipes, removeRecipes} = useContext(DbContext);
 
   useEffect(() => {
     fetchRecipes()
