@@ -8,24 +8,27 @@ import {RecipeList} from "./pages/RecipeList";
 import {AddRecipe} from './pages/AddRecipe';
 import {EditRecipe} from "./pages/EditRecipe";
 import {AlertState} from "./context/alert/AlertState";
+import {DbState} from "./context/database/DbState";
 
 function App() {
     return (
-        <AlertState>
-            <BrowserRouter>
-                <Navbar/>
-                <div className="container pt-4">
-                    <Alert />
-                    <Switch>
-                        <Route path={'/'} exact component={Home} />
-                        <Route path={'/recipes'} exact component={RecipeList} />
-                        <Route path={'/add-recipe'} exact component={AddRecipe} />
-                        <Route path={'/edit-recipe'} exact component={EditRecipe} />
-                        <Route path={'/about'} exact component={About} />
-                    </Switch>
-                </div>
-            </BrowserRouter>
-        </AlertState>
+      <DbState>
+          <AlertState>
+              <BrowserRouter>
+                  <Navbar/>
+                  <div className="container pt-4">
+                      <Alert />
+                      <Switch>
+                          <Route path={'/'} exact component={Home} />
+                          <Route path={'/recipes'} exact component={RecipeList} />
+                          <Route path={'/add-recipe'} exact component={AddRecipe} />
+                          <Route path={'/edit-recipe'} exact component={EditRecipe} />
+                          <Route path={'/about'} exact component={About} />
+                      </Switch>
+                  </div>
+              </BrowserRouter>
+          </AlertState>
+      </DbState>
     );
 }
 

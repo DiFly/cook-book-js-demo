@@ -7,6 +7,8 @@ export const Recipes = ({recipes}) => {
         day: "numeric"
     });
 
+    recipes = (recipes ? recipes : [])
+
     return (
         <div className="card-deck">
             {recipes.map(recipe => (
@@ -19,9 +21,6 @@ export const Recipes = ({recipes}) => {
                             </h6>
                             <p className="card-text">{recipe.description}</p>
                             <div className="recipe-url-button">
-                                <a href="#" className="card-link">
-                                    See all recipe changes
-                                </a>
                                 <button type="button" className="btn btn-outline-info btn-sm">
                                     Details
                                 </button>

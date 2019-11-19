@@ -1,23 +1,27 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useContext, useEffect} from 'react';
 import {Recipes} from "../components/Recipes";
-import { SearchForm } from '../components/SearchForm';
+import {SearchForm} from '../components/SearchForm';
+import {DbContext} from "../context/database/dbContext";
+import {Loader} from "../components/Loader";
 
 export const RecipeList = () => {
-    const recipes = new Array(11)
-        .fill('')
-        .map((_, i) => ({
-            id: i,
-            title: `Recipe Title ${i}`,
-            create: Date.now(),
-            description: 'Some text blablabla',
-            change: Date.now()
-        }))
+  const {loading, recipes, fetchRecipes} = useContext(DbContext);
 
-    return (
-        <Fragment>
-            <SearchForm/>
-            <hr/>
-            <Recipes recipes={recipes}/>
-        </Fragment>
-    )
+  useEffect(() => {
+    fetchRecipes()
+    // eslint-disable-next-line
+  }, []);
+
+  return (
+    <Fragment>
+      <SearchForm/>
+
+      <hr/>
+
+      { loading
+        ? <Loader/>
+        : <Recipes recipes={recipes}/>
+      }
+    </Fragment>
+  )
 }
