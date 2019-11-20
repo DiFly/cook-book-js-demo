@@ -2,26 +2,41 @@ import React, {useContext, useState} from "react";
 import {AlertContext} from "../context/alert/alertContext";
 import {DbContext} from "../context/database/dbContext";
 
-export const CreateForm = (recipe) => {
+export const CreateForm = ({recipe}) => {
   const [title, setTitle] = useState('');
   const [reason, setReason] = useState('');
   const [description, setDescription] = useState('');
   const alert = useContext(AlertContext);
-  const db = useContext(DbContext)
+  const db = useContext(DbContext);
 
   const submitHandler = event => {
     event.preventDefault();
 
     if (title.trim()) {
-      db.addRecipe({
-        title: title,
-        reason: reason,
-        description: description
-      }).then(()=> {
-        alert.show('Recipe created', 'success');
-      }).catch(() => {
-        alert.show('Something wrong... ', 'danger');
-      })
+      console.log('recipe.parent', (!recipe.parent ? '' : recipe.parent))
+      if (recipe.parent) {
+        db.addRecipe({
+          title: title,
+          reason: reason,
+          description: description,
+          parent: recipe.parent
+        }).then(()=> {
+          alert.show('Recipe created', 'success');
+        }).catch(() => {
+          alert.show('Something wrong... ', 'danger');
+        })
+      } else {
+        console.log("parent3: recipe.parent", recipe)
+        db.addRecipe({
+          title: title,
+          reason: reason,
+          description: description,
+        }).then(()=> {
+          alert.show('Recipe created', 'success');
+        }).catch(() => {
+          alert.show('Something wrong... ', 'danger');
+        })
+      }
 
       console.log(title, reason, description);
       setTitle('');

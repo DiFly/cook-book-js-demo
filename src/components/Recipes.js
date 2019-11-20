@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 export const Recipes = ({recipes}) => {
     let  formatterSimple = new Intl.DateTimeFormat("en", {
@@ -14,7 +15,7 @@ export const Recipes = ({recipes}) => {
         minute: "numeric",
     });
 
-    console.log(recipes)
+    // console.log(recipes)
     recipes = (recipes ? recipes : []);
 
     return (
@@ -29,9 +30,11 @@ export const Recipes = ({recipes}) => {
                             </h6>
                             <p className="card-text">{recipe.description}</p>
                             <div className="recipe-url-button">
+                              <Link to={`/id/${recipe.parent}`}>
                                 <button type="button" className="btn btn-outline-info btn-sm">
                                     Details
                                 </button>
+                              </Link>
                             </div>
 
                         </div>

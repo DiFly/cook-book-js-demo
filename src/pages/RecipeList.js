@@ -1,11 +1,10 @@
 import React, {Fragment, useContext, useEffect} from 'react';
 import {Recipes} from "../components/Recipes";
-import {SearchForm} from '../components/SearchForm';
 import {DbContext} from "../context/database/dbContext";
 import {Loader} from "../components/Loader";
 
 export const RecipeList = () => {
-  const {loading, recipes, fetchRecipes, removeRecipes} = useContext(DbContext);
+  const {loading, recipes, fetchRecipes} = useContext(DbContext);
 
   useEffect(() => {
     fetchRecipes()
@@ -14,10 +13,6 @@ export const RecipeList = () => {
 
   return (
     <Fragment>
-      <SearchForm/>
-
-      <hr/>
-
       { loading
         ? <Loader/>
         : <Recipes recipes={recipes}/>

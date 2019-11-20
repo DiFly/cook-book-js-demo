@@ -7,6 +7,8 @@ export const RecipeSimpleView = ({recipes}) => {
         day: "numeric"
     });
 
+    console.log("From RecipeSimpleView", recipes);
+
     return (
         <div>
             {recipes.map(recipe => (

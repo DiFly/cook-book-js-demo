@@ -4,7 +4,7 @@ import { CreateForm } from '../components/CreateForm';
 export const AddRecipe = () => {
     return (
         <Fragment>
-            <CreateForm />
+            <CreateForm recipe={{parent: null}} />
         </Fragment>
     )
 }

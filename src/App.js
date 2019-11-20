@@ -22,7 +22,7 @@ function App() {
                           <Route path={'/'} exact component={Home} />
                           <Route path={'/recipes'} exact component={RecipeList} />
                           <Route path={'/add-recipe'} exact component={AddRecipe} />
-                          <Route path={'/edit-recipe'} exact component={EditRecipe} />
+                          <Route path={'/id/:id'} exact component={EditRecipe} />
                           <Route path={'/about'} exact component={About} />
                       </Switch>
                   </div>

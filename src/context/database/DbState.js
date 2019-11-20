@@ -18,7 +18,7 @@ export const DbState = ({children}) => {
   const fetchRecipes = async () => {
     showLoader();
     const res = await axios.get(`${url}/api`);
-    console.log('fetchRecipes', res.data);
+    // console.log('fetchRecipes', res.data);
 
     const payload =  Object.keys(res.data).map(key => {
       return {
@@ -33,13 +33,29 @@ export const DbState = ({children}) => {
     })
   }
 
+  const fetchRecipesById = async uuid => {
+    showLoader();
+    const res = await axios.get(`${url}/api/id/${uuid}`);
+    console.log('fetchRecipes', res.data);
+
+    const payload =  res.data
+
+    dispatch({
+      type: FETCH_RECIPES,
+      payload
+    })
+  }
+
 
 
   const addRecipe = async recipeInf => {
+    console.log("addRecipe async recipeInf", recipeInf)
+
     const recipe = {
       title: recipeInf.title,
       reason: recipeInf.reason,
-      description: recipeInf.description
+      description: recipeInf.description,
+      parent: recipeInf.parent
     }
 
     try {
@@ -83,7 +99,7 @@ export const DbState = ({children}) => {
 
   return (
     <DbContext.Provider value={{
-      showLoader, addRecipe, removeRecipe, changeRecipe, fetchRecipes,
+      showLoader, addRecipe, removeRecipe, changeRecipe, fetchRecipes, fetchRecipesById,
       loading: state.loading,
       recipes: state.recipes
     }}>

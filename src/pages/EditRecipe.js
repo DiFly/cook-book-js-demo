@@ -1,23 +1,29 @@
-import React, { Fragment } from 'react';
-import { CreateForm } from '../components/CreateForm';
+import React, {Fragment, useContext, useEffect} from 'react';
+import {useParams} from 'react-router-dom';
+
+import {CreateForm} from '../components/CreateForm';
 import {RecipeSimpleView} from "../components/RecipeSimpleView";
+import {DbContext} from "../context/database/dbContext";
+import {Loader} from "../components/Loader";
+
 
 export const EditRecipe = () => {
-    const recipes = new Array(11)
-        .fill('')
-        .map((_, i) => ({
-            id: i,
-            title: `Recipe Title ${i}`,
-            reason: 'Reason text blablabla',
-            description: 'Some text blablabla',
-            change: Date.now()
-        }))
+  const {loading, recipes, fetchRecipesById} = useContext(DbContext);
+  let { id } = useParams();
+
+  useEffect(() => {
+    fetchRecipesById(id)
+    // eslint-disable-next-line
+  }, []);
 
     return (
         <Fragment>
-            <CreateForm />
+          {!loading ? <CreateForm recipe={recipes[0]}/> : ''}
             <hr/>
-            <RecipeSimpleView recipes={recipes} />
+
+          { loading ?
+            <Loader/> : <RecipeSimpleView recipes={recipes}/>
+          }
         </Fragment>
     )
 }
